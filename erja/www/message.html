@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>ERJA :: Lähetä viesti ohjaajalle</title>
+</head>
+
+<body onload="init()">
+    <div id="menu">
+        <ul></ul>
+    </div>
+    <div class="loading">
+        <div>
+            <img src="img/loading.svg" alt="Loading...">
+            <p>Ladataan</p>
+        </div>
+    </div>
+    <div class="modal modal_message" style="display: none">
+        <div class="innerModal">
+            <div id="modalMain" class="modal_pages">
+                <h1 class="modal_header"><span onclick="closeModal('.modal_message')">Palaa takaisin</span></h1>
+                <div class="messageContainerOuter">
+                    <div id="messageContainerMessages" class="messageContainerMessages"></div>
+                    <div class="messageContainerActions">
+                        <textarea id="replyMessage" class="replyMessage" style="display: none" placeholder="Vastaa..."></textarea>
+                        <div id="reply" class="reply">
+                            <i class="fa fa-commenting-o fa-lg"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal_create_message" style="display: none">
+        <div class="innerModal">
+            <div id="modalMain" class="modal_pages">
+                <h1 class="modal_header">Aloita keskustelu</h1>
+                <form class="form1" method="POST" style="width: 100%">
+                    <div>
+                        <label for="message_title">Viestin otsikko</label>
+                        <div>
+                            <input type="text" id="message_title" placeholder="Kirjoita viestin nimi">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="message_description">Kysymys</label>
+                        <div>
+                            <textarea maxlength="400" style="min-height: 150px" id="message_description" placeholder="Kirjoita viesti..."></textarea>
+                        </div>
+                    </div>
+                    <div class="last">
+                        <button type="button" class="btn btn-stump btn-text-center btn-center" onclick="createMessage()"><i class="fa fa-plus fa-fw" aria-hidden="true"></i> Luo keskustelu</button>
+                        <button type="button" class="btn btn-text-center btn-center" onclick="closeModal('.modal_create_message'); getMessagesByUserId('false')"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Palaa takaisin</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menuarea">
+                    <div style="text-align: center">
+                        <i onclick="nav('open')" class="fa fa-bars fa-lg" style="cursor: pointer"></i>
+                    </div>
+                    <div id="current_page">
+                        <span>Lähetä viesti</span>
+                    </div>
+                    <div style="text-align: center">
+                        <i onclick="openModal('.modal_create_message')" id="createMessageBtn" class="fa fa-plus fa-lg" style="display: none; cursor: pointer"></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="innerWrapper">
+            <span id="noGroup" style="display: none">Et ole liittynyt ryhmään ja siksi et voi lähettää viestejä. Liity ensin ryhmään.</span>
+            <span id="noMessages" style="display: none">Et ole vielä luonut keskusteluja.</span>
+            <div class="page" id="page-messages" style="display: none">
+                <div id="messages" class="messages"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/pages/message.js"></script>
+</body>
+
+</html>

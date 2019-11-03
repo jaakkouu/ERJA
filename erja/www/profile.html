@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>ERJA :: Profiili</title>
+</head>
+<body onload="init()">
+    <div id="menu"><ul></ul></div>
+    <div class="loading">
+        <div>
+            <img src="img/loading.svg" alt="Loading...">
+            <p>Ladataan</p>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menuarea">
+                    <div style="text-align: center">
+                        <i onclick="nav('open')" class="fa fa-bars fa-lg" style="cursor: pointer;"></i>
+                    </div>
+                    <div id="current_page">
+                        <span>Profiili</span>
+                    </div>
+                    <div style="text-align: center">
+                        <i id="submitChanges" class="fa fa-check fa-lg badge" style="cursor: pointer"></i>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="innerWrapper">
+            <div class="page" id="page-profile_settings" style="display: block">
+                <div class="profile_image">
+                    <div style="display: inline-block; position: relative">
+                        <img src="img/edit.png" onclick="takePhoto('profileimage')" style="cursor: pointer; position: absolute; width: 63px; bottom: 0; right: 0">
+                        <img src="img/default_avatar.jpg" id="avatar_area" style="border-radius: 50%">
+                    </div>
+                </div>
+                <form class="form1" method="POST">
+                    <h2 style="text-align: center; margin-bottom: 5px">Käyttäjän tiedot</h2>
+                    <div id="user_group" style="display: none; text-align: center">
+                        <label></label>
+                    </div>
+                    <div>
+                        <label for="user_firstname">Etunimi</label>
+                        <div class="inputArea">
+                            <input type="text" name="user_firstname" placeholder="Et ole vielä asettanut etunimeä" id="user_firstname">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="user_lastname">Sukunimi</label>
+                        <div class="inputArea">
+                            <input type="text" name="user_lastname" placeholder="Et ole vielä asettanut sukunimeä" id="user_lastname">
+                        </div>
+                    </div>
+                    <div>
+                        <label for="user_birthyear">Ikä</label>
+                        <div class="inputArea">
+                            <select name="user_birthyear" id="user_birthyear">
+                                <option value="" selected disabled>Valitse...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Sukupuoli</label>
+                        <div class="inputArea" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px">
+                            <label class="radioInput">
+                                <input type="radio" value="1" name="user_sex">Mies
+                            </label>
+                            <label class="radioInput">
+                                <input type="radio" value="2" name="user_sex">Nainen
+                            </label>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Aktiivisuus</label>
+                        <p style="margin: 0 0 6px 0">Kuinka monta kertaa liikut viikossa?</p>
+                        <div class="inputArea" style="display: grid; grid-template-columns: repeat(4, 1fr); grid-gap: 10px">
+                            <label class="radioInput">
+                                <input type="radio" value="0" name="user_activity">0
+                            </label>
+                            <label class="radioInput">
+                                <input type="radio" value="1" name="user_activity">1-2
+                            </label>
+                            <label class="radioInput">
+                                <input type="radio" value="2" name="user_activity">3-4
+                            </label>
+                            <label class="radioInput">
+                                <input type="radio" value="3" name="user_activity">5+
+                            </label>
+                        </div>
+                    </div>
+                    <h3 style="text-align: center">Tilin tiedot</h3>
+                    <div>
+                        <label for="user_email">Sähköposti</label>
+                        <input type="email" name="user_email" readonly="readonly" id="user_email">
+                    </div>
+                    <div style="display: none">
+                        <label for="user_notification">Sallitaanko Push -viestit?</label>
+                        <p style="margin: 0 0 6px 0">Push -viesteillä ohjelma pitää huolen, että muistat suorittaa jokaisen tehtävän ajallaan</p>
+                        <div class="inputArea" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px">
+                            <label class="radioInput">
+                                <input type="radio" value="1" name="user_notification">Kyllä
+                            </label>
+                            <label class="radioInput">
+                                <input type="radio" value="0" name="user_notification">Ei
+                            </label>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/pages/profile.js"></script>
+</body>
+</html>

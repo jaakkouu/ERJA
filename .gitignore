@@ -1,0 +1,10 @@
+/site
+/erja/node_modules
+/erja/hooks
+/erja/platforms
+/erja/plugins
+/erja/res
+/erja/.vscode
+/service/includes/
+
+ERJA.code-workspace

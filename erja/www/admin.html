@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>ERJA :: Hallintapaneeli</title>
+</head>
+<body onload="init()">
+    <div id="menu">
+        <ul></ul>
+    </div>
+    <div class="loading">
+        <div>
+            <img src="img/loading.svg" alt="Loading...">
+            <p>Ladataan</p>
+        </div>
+    </div>
+    <div class="modal modal_group_actions" style="display: none">
+        <div class="innerModal">
+            <div class="modal_pages">
+                <h1 class="modal_header">Valitse toiminto:</h1>
+                <div class="modal_page" data-mdpage="mainmenu" style="display: grid; grid-gap: 15px">
+                    <button type="button" class="btn btn-text-center btn-center btn-stump" onclick="groupAction('listGroupRequests', 'Ryhmäpyynnöt')"><i class="fa fa-exclamation fa-fw"></i> Ryhmäpyynnöt</button>
+                    <button type="button" class="btn btn-text-center btn-center btn-stump" onclick="groupAction('listGroupUsers', 'Ryhmän jäsenet')"><i class="fa fa-users fa-fw"></i> Ryhmän jäsenet</button>
+                    <button type="button" class="btn btn-text-center btn-center btn-stump" onclick="groupAction('removeGroupUsers', 'Poista jäseniä')"><i class="fa fa-user-times fa-fw"></i> Poista käyttäjiä</button>
+                    <button type="button" class="btn btn-text-center btn-center btn-stump" onclick="groupAction('listGroupReports', 'Raportit')"><i class="fa fa-files-o fa-fw"></i> Raportit</button>
+                    <button type="button" class="btn btn-text-center btn-center btn-stump" onclick="destroyGroup()"><i class="fa fa-remove fa-fw"></i> Poista ryhmä</button>
+                    <button type="button" class="btn btn-text-center btn-center" onclick="closeModal('.modal_group_actions')"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Palaa takaisin</button>
+                </div>
+                <div class="modal_page" data-mdpage="listGroupRequests">
+                    <div class="modal_page_content"></div>
+                    <button class="btn btn-text-center btn-center btn-stump" onclick="returnGroupAction()"><i class="fa fa-chevron-left fa-fw"></i> Takaisin</button>
+                </div>
+                <div class="modal_page" data-mdpage="listGroupReports">
+                    <select>
+                        <option selected disabled>Valitse tehtävä...</option>
+                    </select>
+                    <button class="btn btn-text-center btn-center btn-stump" onclick="returnGroupAction()"><i class="fa fa-chevron-left fa-fw"></i> Takaisin</button>
+                </div>
+                <div class="modal_page" data-mdpage="listGroupUsers">
+                    <div class="modal_page_content"></div>
+                    <button class="btn btn-text-center btn-center btn-stump" onclick="returnGroupAction()"><i class="fa fa-chevron-left fa-fw"></i> Takaisin</button>
+                </div>
+                <div class="modal_page" data-mdpage="removeGroupUsers">
+                    <div class="modal_page_content"></div>
+                    <button class="btn btn-text-center btn-center btn-stump" onclick="returnGroupAction()"><i class="fa fa-chevron-left fa-fw"></i> Takaisin</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal_create_group" style="display: none">
+        <div class="innerModal">
+            <div id="modalMain" class="modal_pages">
+                <h1 class="modal_header">Täytä tiedot:</h1>
+                <input type="text" name="group_name" placeholder="Annan ryhmälle nimi">
+                <input type="password" name="group_password" placeholder="Annan ryhmälle salasana">
+                <button type="button" class="btn btn-text-center btn-center btn-stump" onclick="createGroup($('input[name=group_name]').val(), $('input[name=group_password]').val())"><i class="fa fa-users fa-fw"></i> Luo ryhmä</button>
+                <button type="button" class="btn btn-text-center btn-center" onclick="closeModal('.modal_create_group')"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Palaa takaisin</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal modal_showAnswer" style="display: none">
+        <div class="innerModal">
+            <div id="modalMain" class="modal_pages">
+                <h1 class="modal_header"><span onclick="closeModal('.modal_showAnswer');">Palaa takaisin</span></h1>
+                <div id="taskAnswers" class="taskAnswers"></div>
+            </div>
+        </div>
+    </div>
+
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menuarea">
+                    <div style="text-align: center">
+                        <i onclick="nav('open')" class="fa fa-bars fa-lg" style="cursor: pointer"></i>
+                    </div>
+                    <div id="current_page">
+                        <span>Hallintapaneeli</span>
+                    </div>
+                    <div style="text-align: center">
+                        <i onclick="openModal('.modal_create_group')" class="fa fa-plus fa-lg badge" style="cursor: pointer"></i>
+                    </div>
+                </div>
+                <ul style="grid-template-columns: repeat(2, 1fr)">
+                    <li>
+                        <a class="tab" data-page="groups" style="text-align: right">Ryhmäni</a>
+                    </li>
+                    <li>
+                        <a class="tab" data-page="all_comments" style="text-align: left">Palautteeni</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="innerWrapper hasTabs">
+            <div class="page" id="page-groups"></div>
+            <div class="page" id="page-all_comments"></div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
+    <script type="text/javascript" src="js/pages/admin.js"></script>
+</body>
+</html>

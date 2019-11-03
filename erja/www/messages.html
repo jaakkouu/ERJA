@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>ERJA :: Viestit</title>
+</head>
+
+<body onload="init()">
+    <div id="menu">
+        <ul></ul>
+    </div>
+    <div class="loading">
+        <div>
+            <img src="img/loading.svg" alt="Loading...">
+            <p>Ladataan</p>
+        </div>
+    </div>
+    <div class="modal modal_message" style="display: none">
+        <div class="innerModal">
+            <div id="modalMain" class="modal_pages">
+                <h1 class="modal_header"><span onclick="closeModal('.modal_message');">Palaa takaisin</span></h1>
+                <div class="messageContainerOuter">
+                    <div id="messageContainerMessages" class="messageContainerMessages">
+                        <div class="userMessage" id="userMessage-1">
+                            <div class="title"></div>
+                            <div class="message"></div>
+                            <div class="author">
+                                <span class="name"></span>
+                                <span class="group"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="messageContainerActions">
+                        <textarea id="replyMessage" class="replyMessage" style="display: none" placeholder="Vastauksesi..."></textarea>
+                        <div id="reply" class="reply"><i class="fa fa-commenting-o fa-lg"></i></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menuarea">
+                    <div style="text-align: center">
+                        <i onclick="nav('open')" class="fa fa-bars fa-lg" style="cursor: pointer"></i>
+                    </div>
+                    <div id="current_page">
+                        <span>Viestit</span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="innerWrapper">
+            <span id="noGroups" style="display: none">Sinulla ei ole ryhmiä</span>
+            <div class="page" id="page-messages" style="display: block">
+                <style>
+                    .groups_listing_parent {
+                        overflow-y: auto;
+                        width: 0;
+                        margin: 0 0 24px 0
+                    }
+                    
+                    .groups_listing_inner {
+                        overflow-x: auto;
+                        white-space: nowrap
+                    }
+                    
+                    .groups_listing_inner .group {
+                        display: inline-block;
+                        font-family: "RobotoSemiBold", sans-serif;
+                        vertical-align: middle;
+                        padding: 10px 20px;
+                        margin-left: 8px;
+                        border: 1px solid #eaeaea;
+                        border-radius: 15px;
+                        text-align: center;
+                        letter-spacing: 2px
+                    }
+                    
+                    .groups_listing_inner .group.selected {
+                        background-color: #eeeeee
+                    }
+                    
+                    .groups_listing_inner .group:first-of-type {
+                        margin-left: 0;
+                    }
+                </style>
+                <div id="hasGroups" style="display: none">
+                    <h3>Valitse ensin ryhmä:</h3>
+                    <div class="groups_listing_parent">
+                        <div class="groups_listing_inner">
+                        </div>
+                    </div>
+                    <div id="messages" class="messages"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
+    <script type="text/javascript" src="js/pages/messages.js"></script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>ERJA :: Etusivu</title>
+</head>
+
+<body onload="init()">
+    <div id="menu">
+        <ul></ul>
+    </div>
+    <div class="loading">
+        <div>
+            <img src="img/loading.svg" alt="Loading...">
+            <p>Ladataan</p>
+        </div>
+    </div>
+    <div class="modal modal_answer" style="display: none">
+        <div class="innerModal">
+            <div id="modalMain" class="modal_pages">
+                <h1 class="modal_header">Kerro miten suoritit tehtävän?</h1>
+                <textarea placeholder="Kirjoita vastauksesi tähän..." maxlength="1000" id="completeTaskAnswer" style="resize: none; height: 200px"></textarea>
+                <h2 class="modal_subheader">Tähän kenttään voit myös antaa kyseisestä tehtävästä palautteta.</h2>
+                <textarea placeholder="Kirjoita palaute tähän..." maxlength="1000" id="completeTaskFeedback" style="resize: none; height: 100px"></textarea>
+                <h2 class="modal_subheader">Haluatko, että ryhmän jäsenet näkevät vastauksesi?</h2>
+                <div style="width: 100%">
+                    <div class="inputArea" style="display: grid; grid-template-columns: 1fr 1fr; grid-gap: 10px">
+                        <label class="radioInput">
+                            <input type="radio" value="1" name="answer_visibility">Kyllä haluan
+                        </label>
+                        <label class="radioInput">
+                            <input type="radio" value="0" name="answer_visibility">En halua
+                        </label>
+                    </div>
+                </div>
+                <button type="button" class="btn btn-stump btn-text-center btn-center" onclick="completeTask()">Lähetä vastaus</button>
+                <button type="button" class="btn btn-text-center btn-center" onclick="saveTaskAnswer(); closeModal('.modal_answer')"><i class="fa fa-arrow-left fa-fw" aria-hidden="true"></i> Palaa takaisin</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal modal_showAnswer" style="display: none">
+        <div class="innerModal">
+            <div id="modalMain" class="modal_pages">
+                <h1 class="modal_header"><span onclick="closeModal('.modal_showAnswer');">Palaa takaisin</span></h1>
+                <div id="taskAnswers" class="taskAnswers"></div>
+            </div>
+        </div>
+    </div>
+    <!-- End of modals -->
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menuarea">
+                    <div style="text-align: center">
+                        <i onclick="nav('open')" class="fa fa-bars fa-lg" style="cursor: pointer;"></i>
+                    </div>
+                    <div id="current_page">
+                        <span>Etusivu</span>
+                    </div>
+                    <div style="justify-self: center">
+                        <a title="Siirry profiiliin" onclick="redirect('profile.html')"><img class="navigation_avatar" src="img/default_avatar.jpg"></a>
+                    </div>
+                </div>
+                <ul style="display: none; grid-template-columns: 1fr 1fr">
+                    <li>
+                        <a href="#" class="tab" data-page="past_events" style="text-align: right">Menneet</a>
+                    </li>
+                    <li>
+                        <a href="#" class="tab" data-page="current_event" style="text-align: left">Nykyinen</a>
+                    </li>
+                </ul>
+            </nav>
+        </header>
+        <div class="innerWrapper">
+            <div class="page" id="page-no_group">
+                <div class="noGroupField">
+                    <h1>Tervetuloa!</h1>
+                    <h3>Aloita liittymällä ryhmään</h3>
+                    <div>
+                        <input type="text" id="requestGroupName" placeholder="Ryhmän nimi">
+                    </div>
+                    <div>
+                        <input type="password" id="requestGroupKey" placeholder="Ryhmän avain">
+                    </div>
+                    <div>
+                        <button type="button" class="btn btn-stump btn-text-center btn-center" onclick="sendGroupRequest()">Lähetä liittymispyyntö</button>
+                    </div>
+                </div>
+            </div>
+            <div class="page" id="page-past_events">
+                <div id="list_past_tasks"></div>
+            </div>
+            <div class="page" id="page-current_event">
+                <div id="list_current_tasks"></div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/pages/index.js"></script>
+</body>
+</html>

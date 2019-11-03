@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="css/airbnb.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <title>ERJA :: Uusi tehtävä</title>
+</head>
+<body onload="init()">
+    <div id="menu">
+        <ul></ul>
+    </div>
+    <div class="loading">
+        <div><img src="img/loading.svg" alt="Loading...">
+            <p>Ladataan</p>
+        </div>
+    </div>
+    <div class="wrapper">
+        <header>
+            <nav>
+                <div class="menuarea">
+                    <div style="text-align: center">
+                        <i onclick="nav('open')" class="fa fa-bars fa-lg" style="cursor: pointer"></i>
+                    </div>
+                    <div id="current_page">
+                        <span>Uusi tehtävä</span>
+                    </div>
+                </div>
+            </nav>
+        </header>
+        <div class="innerWrapper">
+            <div class="page" id="page-task" style="display: block">
+                <span id="noGroups" style="display: none">Sinulla ei ole ryhmiä</span>
+                <div id="groupSelect" style="display: none; margin-bottom: 16px">
+                    <label for="task_group" style="display: block; padding-bottom: 5px">Ryhmän valinta</label>
+                    <div>
+                        <select id="task_group">
+                            <option disabled selected value="">Valitse...</option>
+                        </select>
+                    </div>
+                </div>
+
+                <form class="form1" method="POST" style="display: none">
+                    <div>
+                        <label for="task_name">Tehtävän nimi</label>
+                        <div>
+                            <input type="text" id="task_name" placeholder="Kirjoita tehtävän nimi">
+                        </div>
+                    </div>
+                    <div>
+                        <label>Tehtävän kuva</label>
+                        <img style="display: none" src="" class="previewTaskImage" id="previewTaskImage" alt="Preview of Task image">
+                        <button id="removeTaskImage" style="display: none" type="button" class="btn btn-stump btn-text-center btn-center"><i class="fa fa-remove fa-fw"></i> Peruuta</button>
+                        <button id="addTaskImage" type="button" class="btn btn-text-center btn-center"><i class="fa fa-picture-o fa-fw"></i> Valitse tiedosto...</button>
+                    </div>
+                    <div>
+                        <label for="task_description">Kuvaus</label>
+                        <div>
+                            <textarea maxlength="1024" style="min-height: 150px" id="task_description" placeholder="Kirjoita tehtävän kuvaus"></textarea>
+                        </div>
+                    </div>
+                    <div style="display: none">
+                        <script>
+                            function task_amount_ctrl(action) {
+                                var currentValue = $("#task_amount").data("taskamount");
+                                switch (action) {
+                                    case 'minus':
+                                        if (currentValue != 1) {
+                                            currentValue = currentValue - 1;
+                                        }
+                                        break;
+                                    case 'add':
+                                        currentValue = currentValue + 1;
+                                        break;
+                                }
+                                $("#task_amount").data("taskamount", currentValue).html(currentValue);
+                            }
+                        </script>
+                        <label for="task_amount">Suorituskerrat</label>
+                        <div class="three">
+                            <i class="fa fa-minus fa-2x" onclick="task_amount_ctrl('minus')" style="color: red; justify-self: center; align-self: center"></i>
+                            <h3 id="task_amount" data-taskamount="1" style="justify-self: center; align-self: center">1</h3>
+                            <i class="fa fa-plus fa-2x" onclick="task_amount_ctrl('add')" style="color: green; justify-self: center; align-self: center"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <label>Ajankohta</label>
+                        <div>
+                            <input placeholder="Aloitus- ja lopetuspäivämäärä" type="text" id="task_date" name="task_date">
+                        </div>
+                    </div>
+                    <button type="button" class="last btn btn-stump btn-text-center btn-center" onclick="createTask()"><i class="fa fa-check fa-fw"></i> Tallenna tehtävä</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="cordova.js"></script>
+    <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="js/flatpickr.js"></script>
+    <script type="text/javascript" src="js/moment.js"></script>
+    <script type="text/javascript" src="js/moment-with-locales.js"></script>
+    <script type="text/javascript" src="js/config.js"></script>
+    <script type="text/javascript" src="js/main.js"></script>
+    <script type="text/javascript" src="js/admin.js"></script>
+    <script type="text/javascript" src="js/pages/task.js"></script>
+</body>
+</html>

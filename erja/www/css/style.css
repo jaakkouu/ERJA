@@ -1,0 +1,1049 @@
+@font-face {
+    font-family: RobotoRegular;
+    src: url('../fonts/Ubuntu/Ubuntu-Regular.ttf') format("truetype")
+}
+
+@font-face {
+    font-family: RobotoLight;
+    src: url('../fonts/Ubuntu/Ubuntu-Light.ttf') format("truetype")
+}
+
+@font-face {
+    font-family: RobotoSemiBold;
+    src: url('../fonts/Ubuntu/Ubuntu-Medium.ttf') format("truetype")
+}
+
+* {
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+html,
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box
+}
+
+body {
+    line-height: 1.6875;
+    color: #111111;
+    font-family: 'RobotoLight', sans-serif
+}
+
+.body-bg {
+    background-image: url(../img/background.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+body#login,
+body#register {
+    background-color: #eeeeee;
+}
+
+a {
+    text-decoration: none;
+    cursor: pointer
+}
+
+.wrapper {
+    /*height: 100%;*/
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 768px;
+    margin: 0 auto
+}
+
+.navigation_avatar {
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: block;
+}
+
+.menuarea {
+    background-color: #B10DC9;
+    height: 52px;
+    display: grid;
+    padding: 10px 0 10px 0;
+    grid-template-columns: 61px auto 75px;
+}
+
+.menuarea div {
+    align-self: center;
+}
+
+.menuarea #current_page {
+    color: #ffffff;
+    font-family: "RobotoLight";
+    font-size: 16px;
+}
+
+.menuarea div i {
+    color: #ffffff;
+    cursor: pointer
+}
+
+.menuarea div i.badge {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 50%;
+    height: 40px;
+    width: 40px;
+    line-height: 45px;
+    text-align: center;
+}
+
+.tab {
+    background-color: #870a99
+}
+
+.page {
+    display: none
+}
+
+.pageTitle,
+.appTitle {
+    text-align: center
+}
+
+.appTitle h1 {
+    font-family: "RobotoSemiBold";
+    font-size: 4em
+}
+
+.pageTitle h1 {
+    font-family: "RobotoSemiBold";
+    font-size: 26px
+}
+
+.innerWrapper {
+    /*overflow-y: auto;*/
+    position: relative;
+    z-index: 1;
+    margin: 0;
+    width: 100%;
+    padding: 24px 20px 40px 20px;
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: 1fr;
+    margin-top: 73px
+}
+
+.innerWrapper.hasTabs {
+    margin-top: 119px
+}
+
+header {
+    position: fixed;
+    z-index: 2;
+    width: 100%
+}
+
+header nav {
+    display: grid;
+    grid-template-columns: 1fr
+}
+
+header nav ul {
+    display: grid;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+header nav ul li a {
+    cursor: pointer;
+    font-family: "RobotoSemiBold";
+    box-sizing: border-box;
+    text-transform: uppercase;
+    display: block;
+    padding: 10px 20px;
+    width: 100%;
+    color: #ffffff;
+    -webkit-transition: all 100ms ease-in-out;
+    -moz-transition: all 100ms ease-in-out;
+    -ms-transition: all 100ms ease-in-out;
+    -o-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out
+}
+
+header nav ul li a:focus,
+.active-tab,
+.active-link {
+    background-color: #ffffff;
+    color: #111111
+}
+
+
+/* GROUPS */
+
+#list_events,
+.list_groups,
+.list_comments {
+    display: grid;
+    grid-row-gap: 20px
+}
+
+.list_groups .group_row {
+    display: grid;
+    grid-template-areas: "grouptitle groupactions" "grouptasks grouptasks";
+    grid-template-columns: auto 60px
+}
+
+.list_comments .group_row {
+    display: grid;
+    grid-template-areas: "grouptitle" "grouptasks";
+    grid-template-columns: 1fr;
+}
+
+.group_title {
+    grid-area: grouptitle;
+    background-color: #B10DC9;
+    padding: 5px 8px
+}
+
+.group_title h3 {
+    color: #ffffff;
+    margin: 0;
+    padding: 0
+}
+
+.group_actions {
+    grid-area: groupactions;
+    background-color: #870a99;
+    display: grid
+}
+
+.group_actions i {
+    color: #ffffff;
+    align-self: center;
+    justify-self: center
+}
+
+.group_tasks {
+    grid-area: grouptasks;
+    background-color: #f5f5f5;
+    padding: 5px 15px
+}
+
+.group_tasks ul {
+    list-style: none;
+    padding-left: 0;
+    margin-top: 0;
+    margin-bottom: 0
+}
+
+.group_tasks .group_task {
+    padding: 8px 0;
+    border-top: 1px solid #ececec
+}
+
+.group_tasks .group_task ul li {
+    padding: 2px 0;
+}
+
+.group_tasks .group_task:first-of-type {
+    border-top: none
+}
+
+.group_tasks .group_task .title {
+    display: grid;
+    grid-template-columns: auto 34px;
+    align-items: center
+}
+
+.group_tasks .group_task .title span {
+    font-family: "RobotoSemiBold", sans-serif
+}
+
+.group_tasks .group_task .title i {
+    text-align: center
+}
+
+.list_groups .group_tasks .group_task .title i::after {
+    content: "\f067"
+}
+
+.group_tasks .group_task .opened {
+    font-size: 14px;
+}
+
+.group_tasks .group_task .closed {
+    font-size: 14px;
+    opacity: 0;
+    visibility: hidden;
+    display: none
+}
+
+.group_tasks .group_task:hover>ul {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+}
+
+.list_groups .group_tasks .group_task:hover>li.title i::after {
+    content: "\f068"
+}
+
+.group_tasks .removeTaskButton {
+    border: 1px solid #ececec;
+    border-radius: 3px;
+    padding: 2px 3px 2px 0;
+    background-color: #efefef;
+    color: #555;
+    width: 100%;
+    display: inline-block;
+    text-align: center
+}
+
+.group_tasks .removeTaskButton i {
+    color: #fd4545
+}
+
+
+/* END OF GROUPS */
+
+
+/* MESSAGES */
+
+.messages {
+    display: grid;
+    grid-gap: 20px
+}
+
+.messages .message {
+    display: grid;
+    border: 1px solid #eeeeee;
+    background-color: #f5f5f5;
+    border-radius: 6px;
+    font-size: 14px;
+    grid-template-areas: "msgIcon msgName" "msgIcon msgMsg" "msgIcon msgMeta";
+    grid-template-columns: 1fr 4fr;
+    padding: 6px 0
+}
+
+.messages .message.visited {
+    opacity: 0.4
+}
+
+.messages .message .userImage {
+    grid-area: msgIcon;
+    align-self: center;
+    justify-self: center
+}
+
+.messages .message .userImage img {
+    width: 100%;
+    max-width: 35px;
+    border-radius: 50%;
+    display: block
+}
+
+.messages .message .userName {
+    font-family: "RobotoSemiBold", sans-serif;
+    grid-area: msgName
+}
+
+.messages .message .userMessage {
+    font-family: "RobotoRegular", sans-serif;
+    font-size: 13px;
+    grid-area: msgMsg
+}
+
+.messages .message .userMeta {
+    font-family: "RobotoLight", sans-serif;
+    font-size: 12px;
+    grid-area: msgMeta;
+    display: grid
+}
+
+.reply {
+    background-color: #B10DC9;
+    color: #ffffff;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+    position: fixed;
+    bottom: 1em;
+    right: 1em;
+    text-align: center;
+    line-height: 60px;
+}
+
+.modal_message .innerModal {
+    height: 100%;
+    width: 100%;
+    overflow-y: scroll;
+    position: absolute;
+    overflow-x: auto;
+    box-sizing: border-box;
+}
+
+.messageContainerOuter {
+    display: grid;
+    width: 100%;
+    grid-gap: 15px
+}
+
+.messageContainerMessages {
+    display: grid;
+    grid-gap: 15px;
+    padding-bottom: 20px;
+}
+
+.messageContainerActions {
+    display: grid;
+    grid-gap: 15px
+}
+
+.messageContainerMessages .userMessage {
+    display: grid;
+    width: 100%;
+    background-color: #EEEEEE;
+}
+
+.messageContainerMessages .userMessage:first-of-type {
+    border-bottom: 3px solid #B10DC9;
+}
+
+.messageContainerMessages .userMessage .author {
+    font-size: 12px;
+    display: grid;
+    grid-template-columns: auto max-content;
+    grid-gap: 10px;
+    font-family: "RobotoLight", sans-serif;
+    background-color: #e5e5e5;
+}
+
+.messageContainerMessages .userMessage .author .name,
+.messageContainerMessages .userMessage .author .group,
+.messageContainerMessages .userMessage .author .timestamp {
+    padding: 5px 10px;
+}
+
+.messageContainerMessages .userMessage .title {
+    padding: 25px 5px 5px 10px;
+    font-family: "RobotoRegular", sans-serif;
+    font-size: 30px;
+    line-height: 32px;
+    word-break: break-word;
+}
+
+.messageContainerActions textarea.replyMessage {
+    width: 100%;
+    padding: 15px;
+    height: 110px;
+    font-family: "RobotoLight", sans-serif;
+    resize: none
+}
+
+.messageContainerMessages .userMessage .message {
+    font-size: 20px;
+    font-family: "RobotoLight", sans-serif;
+    padding: 20px 10px 20px 10px;
+    line-height: 23px;
+    word-break: break-word;
+}
+
+
+/* END OF MESSAGES */
+
+form {
+    display: grid
+}
+
+form .last {
+    margin: 20px 0 15px 0
+}
+
+.form1 .two,
+.form2 .two {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr
+}
+
+.form1 .three,
+.form2 .three {
+    display: grid;
+    grid-column-gap: 10px;
+    grid-template-columns: 1fr 1fr 1fr
+}
+
+.form1 {
+    grid-row-gap: 20px
+}
+
+.form1>div,
+.form2>div {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row-gap: 5px;
+    align-items: center;
+}
+
+.form2 {
+    grid-template-columns: 1fr 1fr
+}
+
+.form1 .title,
+.form2 .title {
+    margin: 0
+}
+
+label {
+    font-family: "RobotoRegular"
+}
+
+.inputArea {
+    -webkit-transition: all 300ms ease-in-out;
+    -moz-transition: all 300ms ease-in-out;
+    -ms-transition: all 300ms ease-in-out;
+    -o-transition: all 300ms ease-in-out;
+    transition: all 300ms ease-in-out
+}
+
+.inputfile {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1
+}
+
+.inputfile+label {
+    display: inline-block
+}
+
+.inputAreaSelected {
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 6fr 2fr;
+    align-items: center
+}
+
+input[type="text"],
+input[type="tel"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+    font-family: "RobotoLight", sans-serif;
+    box-sizing: border-box;
+    width: 100%;
+    font-size: 16px;
+    -webkit-appearance: none;
+    border: 1px solid #cecece;
+    padding: 15px 18px;
+    background-color: #ffffff;
+    border-radius: 5px;
+    -webkit-user-select: auto !important;
+    -khtml-user-select: auto !important;
+    -moz-user-select: auto !important;
+    -ms-user-select: auto !important;
+    user-select: auto !important;
+}
+
+textarea {
+    resize: vertical;
+}
+
+label.radioInput,
+label.checkboxInput {
+    cursor: pointer;
+    -webkit-transition: all 100ms ease-in-out;
+    -moz-transition: all 100ms ease-in-out;
+    -ms-transition: all 100ms ease-in-out;
+    -o-transition: all 100ms ease-in-out;
+    transition: all 100ms ease-in-out;
+    border: 1px solid rgba(0, 0, 0, .1);
+    padding: 10px 15px;
+    text-align: center;
+    display: block;
+    font-size: 17px;
+    background-color: #B10DC9;
+    color: #fff;
+    border-radius: 3px;
+}
+
+label.radioInput input[type='radio'],
+label.checkboxInput input[type='checkbox'] {
+    float: left;
+    position: absolute;
+    visibility: hidden;
+    -webkit-appearance: none;
+    width: 0px !important
+}
+
+.btn {
+    font-family: "RobotoSemiBold";
+    background-color: #ffffff;
+    -webkit-appearance: none;
+    z-index: 1;
+    cursor: pointer;
+    position: relative;
+    padding: 15px 20px;
+    border: 1px solid #B10DC9;
+    border-radius: 5px;
+    color: #B10DC9;
+    width: 100%;
+    box-sizing: border-box;
+    text-transform: uppercase;
+    font-size: 16px;
+    letter-spacing: 2px;
+}
+
+.radioInput.selected {
+    background-color: #5d0769
+}
+
+.btn.stickyBottom {
+    position: fixed;
+    bottom: 5%;
+    width: 50%;
+    left: 25%;
+}
+
+#avatar_area {
+    width: 150px;
+    height: 150px;
+    display: block;
+}
+
+.btn i {
+    color: #555;
+    float: left;
+}
+
+.btn.btn-text-center {
+    text-align: center;
+}
+
+.btn.btn-center {
+    justify-self: center;
+}
+
+.btn.btn-stump {
+    background-color: #B10DC9;
+    color: #ffffff
+}
+
+.btn.btn-stump i {
+    color: #ffffff;
+    float: left;
+}
+
+.copywright {
+    font-size: 12px;
+    text-align: center;
+    color: #333
+}
+
+.profile_image {
+    text-align: center
+}
+
+.noGroupField {
+    display: grid;
+    grid-gap: 25px
+}
+
+.noGroupField h1 {
+    font-family: "RobotoSemiBold"
+}
+
+.noGroupField h1,
+.noGroupField h3 {
+    margin: 0;
+    text-align: center
+}
+
+
+/* Loading */
+
+.loading {
+    background-color: rgba(131, 12, 150, 1);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    display: none;
+    top: 0;
+    left: 0;
+    z-index: 7;
+    text-align: center;
+}
+
+.loading div {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.loading div p {
+    margin: 0;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0px 1px 1px rgba(0, 0, 0, 0.4);
+}
+
+.fade {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2
+}
+
+
+/* End of loading */
+
+
+/*  Navigation */
+
+#menu {
+    background-color: #830C96;
+    overflow-x: hidden;
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 3;
+    top: 0;
+    left: 0
+}
+
+#menu h3 {
+    margin: 0;
+}
+
+#menu ul {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0
+}
+
+#menu ul li a {
+    width: 270px;
+    box-sizing: border-box;
+    float: left;
+    white-space: nowrap;
+    padding: 20px 15px 20px 15px
+}
+
+#menu ul li a.active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+#menu ul li {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+}
+
+#menu ul li:last-of-type {
+    border: 0;
+}
+
+#menu ul li a i {
+    padding-right: 8px;
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.4)
+}
+
+#menu ul li a {
+    color: #fff;
+}
+
+
+/* End of navigation */
+
+
+/* Modal */
+
+.modal {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #ffffff;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+    overflow-y: scroll;
+}
+
+.modal i.close {
+    z-index: 2;
+    position: absolute;
+    right: 20px;
+    top: 24px;
+    cursor: pointer
+}
+
+.modal .innerModal {
+    padding: 15px
+}
+
+.modal_pages {
+    display: grid;
+    grid-template-columns: 1fr;
+    justify-items: center;
+    grid-gap: 20px;
+}
+
+.modal_page .md_actions {
+    display: grid;
+    grid-row-gap: 10px;
+    justify-items: center;
+    grid-template-columns: 1fr
+}
+
+.modal .modal_page_content {
+    margin-bottom: 36px
+}
+
+.modal .modal_page_content .listItems {
+    display: grid
+}
+
+.modal .modal_page_content .listItems.listActions div {
+    grid-template-columns: auto 30px;
+}
+
+.modal .modal_page_content .listItems div {
+    display: grid;
+    padding: 7px 10px;
+    align-items: center;
+    border: 1px solid #cecece;
+    border-bottom: 0
+}
+
+.modal .modal_page_content .listItems:last-child {
+    border-bottom: 1px solid #cecece
+}
+
+.modal .modal_page_content .listItems div:nth-child(even) {
+    background-color: #efefef
+}
+
+.modal .group_title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 30px;
+    margin-top: 25px
+}
+
+.modal .modal_header {
+    text-align: left;
+    font-size: 24px;
+    margin-top: 0;
+    margin-bottom: 5px
+}
+
+.modal .modal_subheader {
+    text-align: left;
+    font-size: 16px;
+    margin-top: 0;
+    margin-bottom: 5px;
+}
+
+.modal .modal_page {
+    position: relative;
+    width: 100%;
+    display: none
+}
+
+.modal input[type=text],
+.modal input[type=password],
+.modal input[type=number],
+.modal input[type=email] {
+    background-color: transparent;
+    -webkit-appearance: none;
+    z-index: 1;
+    position: relative;
+    padding: 15px 20px;
+    border: 1px solid #B10DC9;
+    border-radius: 30px;
+    font-size: 16px;
+    margin-bottom: 10px;
+    outline: none;
+    font-family: 'RobotoLight', sans-serif
+}
+
+
+/* TASK */
+
+.previewTaskImage {
+    width: 100%;
+    display: block;
+    max-width: 120px
+}
+
+.task {
+    display: grid;
+}
+
+.task.task_past {
+    position: relative;
+}
+
+.task_past .title {
+    text-align: left;
+}
+
+.task_current .title {
+    text-align: center;
+    margin-top: 0;
+}
+
+.task .timer {
+    margin: 0;
+    padding: 0;
+    margin-top: 19px;
+}
+
+.task .image {
+    display: none;
+    width: 100%;
+    max-width: 170px;
+    margin: 0 auto;
+    border-radius: 50%;
+    max-height: 170px;
+}
+
+.task .imageContainer {
+    text-align: center
+}
+
+.task_past .taskCompletionStatus {
+    margin: 0;
+    padding: 0;
+    font-size: 19px;
+    background-color: #eeeeee;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    line-height: 35px;
+    border-radius: 50%;
+    margin-right: 12px;
+}
+
+.task_past .taskCompletionStatus.completed {
+    animation-name: goodjobShake;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+.task .desc {
+    background-color: #f5f5f5;
+    padding: 10px 16px;
+    word-break: break-word;
+}
+
+.task .controls {
+    display: grid;
+    text-align: center;
+    grid-gap: 16px;
+}
+
+
+/* */
+
+.taskAnswers {
+    width: 100%;
+    display: grid;
+    grid-gap: 10px;
+    font-family: "RobotoLight", sans-serif
+}
+
+.taskAnswers .answer {
+    width: 100%;
+    display: grid;
+    background-color: #eee;
+    padding: 10px 15px;
+    font-size: 14px;
+    grid-gap: 5px;
+    box-sizing: border-box;
+    font-family: "RobotoLight", sans-serif;
+}
+
+.taskAnswers .answer.youranswer {
+    border: 2px solid #B10DC9
+}
+
+.taskAnswers .answer div {
+    display: inline-block
+}
+
+.taskAnswers .answer .actions {
+    text-align: right
+}
+
+.taskAnswers .answer .actions span {
+    padding: 5px;
+    font-size: 15px;
+}
+
+.taskAnswers .answer .likeButton {
+    padding: 2px 5px;
+    background-color: #B10DC9;
+    color: #ffffff;
+    cursor: pointer;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    display: inline-block;
+    text-align: center;
+    line-height: 25px;
+}
+
+.goodjobContainer {
+    display: grid;
+    align-items: center;
+}
+
+.goodjobContainer h2 {
+    margin-bottom: 0px;
+    text-align: center;
+}
+
+.goodjobContainer p {
+    margin: 0;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.goodjobContainer img {
+    display: block;
+    justify-self: center;
+    width: 100%;
+    max-width: 200px;
+    animation-name: goodjobShake;
+    animation-duration: 1.5s;
+    animation-direction: alternate;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes goodjobShake {
+    from {
+        -ms-transform: rotate(-20deg);
+        -webkit-transform: rotate(-20deg);
+        transform: rotate(-20deg);
+    }
+    to {
+        -ms-transform: rotate(40deg);
+        -webkit-transform: rotate(40deg);
+        transform: rotate(40deg);
+    }
+}
